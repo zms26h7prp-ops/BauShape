@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BauShape — Vitaminpräparat</title>
+<meta name="description" content="BauShape – Muster-Website für ein fiktives Vitaminpräparat.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+:root{
+  --ink:#101513;
+  --paper:#f3f0e8;
+  --paper2:#e8e5dc;
+  --green:#0c4b3d;
+  --acid:#d9ef5a;
+  --line:rgba(16,21,19,.18);
+  --muted:#626861;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1280px,calc(100% - 48px));margin:auto}
+
+/* NAV */
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:5}
+.logo{font-weight:700;letter-spacing:-.07em;font-size:27px}
+.logo span{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
+.navlinks{display:flex;gap:34px;font-size:13px}
+.navlinks a{position:relative}
+.navlinks a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--ink);transition:.25s}
+.navlinks a:hover:after{width:100%}
+.navcta{background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:999px;font-size:13px;font-weight:700}
+
+/* HERO */
+.hero{min-height:calc(100vh - 82px);display:grid;grid-template-columns:1.03fr .97fr;border-bottom:1px solid var(--line);overflow:hidden}
+.hero-copy{padding:8vw 6vw 7vw 0;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font:500 11px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.13em;color:var(--green);margin-bottom:25px}
+h1{font-size:clamp(70px,9.4vw,155px);line-height:.84;letter-spacing:-.075em;margin:0;max-width:900px;font-weight:700}
+h1 em{font-family:"Playfair Display",serif;font-weight:500;letter-spacing:-.07em}
+.hero-sub{font-size:18px;line-height:1.55;max-width:560px;margin:36px 0 0;color:#303832}
+.actions{display:flex;align-items:center;gap:15px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:13px;padding:17px 23px;border-radius:999px;background:var(--green);color:white;font-weight:700;font-size:14px}
+.btn.light{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.arrow{font-size:18px}
+.hero-meta{display:flex;gap:32px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);max-width:650px}
+.meta{display:flex;gap:10px;align-items:flex-start;font-size:11px;line-height:1.35}
+.meta b{font-size:17px;font-weight:500}
+.meta span{max-width:125px;color:var(--muted)}
+.hero-art{background:var(--green);position:relative;min-height:650px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-art:before{content:"BAUSHAPE";position:absolute;font-size:clamp(90px,14vw,220px);font-weight:700;letter-spacing:-.08em;color:rgba(255,255,255,.055);transform:rotate(-90deg);white-space:nowrap}
+.circle{position:absolute;width:420px;height:420px;border-radius:50%;background:var(--acid);right:-80px;top:10%;opacity:.95}
+.product-stage{position:relative;z-index:2;transform:rotate(5deg);filter:drop-shadow(25px 35px 20px rgba(0,0,0,.25))}
+.bottle{width:245px;height:420px;background:#f7f5ed;border-radius:34px 34px 42px 42px;position:relative;border:2px solid #d8d5cc}
+.cap{width:205px;height:72px;background:#e9e6dd;border-radius:18px 18px 10px 10px;position:absolute;top:-61px;left:18px;border:2px solid #d1cec5}
+.cap:after{content:"";position:absolute;inset:9px 15px;border-top:2px solid #c8c5bb;border-bottom:2px solid #c8c5bb;border-radius:10px}
+.label{position:absolute;left:20px;right:20px;top:105px;bottom:28px;border:1px solid #d4d1c8;background:#f0eee6;padding:28px 15px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.label .mark{font-size:45px;line-height:1;color:var(--green);margin-bottom:10px}
+.label h2{font-size:27px;letter-spacing:-.07em;margin:0;color:var(--green)}
+.label p{font:10px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;margin:10px 0;color:#555b55}
+.label .rule{width:60px;height:1px;background:#c4c1b7;margin:10px 0}
+.label small{font-size:10px;color:#555b55}
+.capsule{position:absolute;width:70px;height:25px;border-radius:50px;background:#e6dfcf;border:1px solid #cbc4b5;transform:rotate(25deg);box-shadow:inset 32px 0 #d7ceb9}
+.c1{right:20%;bottom:18%}.c2{right:31%;bottom:12%;transform:rotate(-15deg)}
+.price-tag{position:absolute;z-index:3;left:12%;bottom:17%;background:var(--paper);border-radius:50%;width:145px;height:145px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-9deg)}
+.price-tag strong{font-size:27px;letter-spacing:-.06em}.price-tag span{font:10px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+
+/* MARQUEE */
+.marquee{overflow:hidden;background:var(--ink);color:var(--paper);border-bottom:1px solid var(--line);white-space:nowrap}
+.marquee-track{display:inline-flex;animation:scroll 22s linear infinite;padding:17px 0}
+.marquee span{font:500 12px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.13em;margin:0 30px}
+.marquee i{color:var(--acid);font-style:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* INTRO */
+.intro{padding:130px 0 110px}
+.intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:7vw}
+.kicker{font:500 11px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--green)}
+.intro h2{font-size:clamp(45px,6vw,88px);line-height:.92;letter-spacing:-.07em;margin:25px 0 0}
+.intro h2 em{font-family:"Playfair Display",serif;font-weight:500}
+.intro-right{font-size:24px;line-height:1.35;max-width:730px}
+.intro-right p{margin:0 0 28px}
+.mini-note{font:12px "DM Mono",monospace;line-height:1.5;color:var(--muted);max-width:470px}
+
+/* STEPS */
+.steps{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.step{padding:55px 30px 60px;border-right:1px solid var(--line)}
+.step:first-child{padding-left:0}.step:last-child{border-right:0}
+.step-num{font:500 12px "DM Mono",monospace;color:var(--green)}
+.step-icon{font-size:38px;margin:55px 0 30px}
+.step h3{font-size:21px;letter-spacing:-.04em;margin:0 0 14px}
+.step p{font-size:14px;line-height:1.55;color:var(--muted);margin:0;max-width:230px}
+
+/* PERSONA */
+.persona{background:var(--paper2);padding:100px 0}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.persona-photo{min-height:620px;background:
+ radial-gradient(circle at 65% 30%,rgba(255,255,255,.65),transparent 24%),
+ linear-gradient(145deg,#a9b0a0,#d8d2c4 45%,#777d70);
+ position:relative;overflow:hidden}
+.persona-photo:before{content:"";position:absolute;width:330px;height:470px;background:#303c35;border-radius:47% 47% 8% 8%;left:24%;bottom:-50px;transform:rotate(4deg)}
+.persona-photo:after{content:"";position:absolute;width:170px;height:190px;border-radius:50%;background:#b9a38e;left:38%;top:21%}
+.quote{position:absolute;z-index:2;left:9%;bottom:9%;max-width:350px;color:white;font-family:"Playfair Display",serif;font-size:25px;line-height:1.1}
+.quote small{display:block;font:11px "DM Mono",monospace;margin-top:18px;color:rgba(255,255,255,.8)}
+.persona h2{font-size:clamp(48px,6vw,84px);line-height:.9;letter-spacing:-.07em;margin:20px 0 30px}
+.persona p{font-size:18px;line-height:1.55;max-width:520px;color:#3f4741}
+.big-word{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+
+/* PRODUCT */
+.product{padding:120px 0}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}
+.product-visual{min-height:560px;background:#dce2d4;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-visual:before{content:"";position:absolute;width:440px;height:440px;border-radius:50%;border:1px solid rgba(12,75,61,.25)}
+.product-visual .bottle{transform:scale(.9);z-index:2}
+.product-copy h2{font-size:clamp(50px,6vw,90px);line-height:.88;letter-spacing:-.07em;margin:20px 0 30px}
+.product-copy h2 em{font-family:"Playfair Display",serif;font-weight:500}
+.product-copy p{font-size:18px;line-height:1.55;color:#3f4741;max-width:580px}
+.specs{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:38px 0}
+.spec{padding:22px 15px 22px 0;border-right:1px solid var(--line)}
+.spec:nth-child(2n){border-right:0;padding-left:20px}
+.spec b{display:block;font-size:24px;letter-spacing:-.05em}.spec span{font:10px "DM Mono",monospace;text-transform:uppercase;color:var(--muted);letter-spacing:.08em}
+
+/* CTA */
+.final{background:var(--green);color:var(--paper);padding:120px 0 90px;position:relative;overflow:hidden}
+.final:after{content:"30";position:absolute;right:-3vw;bottom:-15vw;font-size:48vw;font-weight:700;letter-spacing:-.1em;color:rgba(255,255,255,.045)}
+.final-inner{position:relative;z-index:2;max-width:1000px}
+.final h2{font-size:clamp(60px,9vw,140px);line-height:.83;letter-spacing:-.08em;margin:20px 0 40px}
+.final h2 em{font-family:"Playfair Display",serif;font-weight:500}
+.final p{font-size:18px;line-height:1.55;max-width:560px;color:rgba(243,240,232,.78)}
+.final .btn{background:var(--acid);color:var(--ink);margin-top:15px}
+
+/* FOOTER */
+footer{background:var(--ink);color:var(--paper);padding:35px 0}
+.footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+.footer-logo{font-size:25px;font-weight:700;letter-spacing:-.06em}
+.footer-meta{font:10px "DM Mono",monospace;line-height:1.6;color:#9ca29d;max-width:560px}
+.footer-links{display:flex;gap:25px;font-size:11px}
+.disclaimer{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);font:10px "DM Mono",monospace;color:#818781}
+
+/* MOBILE */
+@media(max-width:850px){
+ .container{width:min(100% - 30px,1280px)}
+ .nav{height:70px}.navlinks{display:none}
+ .hero{display:block}.hero-copy{padding:70px 0}.hero-art{min-height:550px}
+ h1{font-size:18vw}.hero-sub{font-size:16px}.hero-meta{gap:15px;flex-wrap:wrap}
+ .intro{padding:85px 0}.intro-grid,.persona-grid,.product-grid{grid-template-columns:1fr;gap:45px}
+ .intro-right{font-size:20px}.step-grid{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--line)}.step:nth-child(2){border-right:0}
+ .persona-photo{min-height:500px}.product{padding:85px 0}.product-visual{min-height:470px}
+ .footer-grid{flex-direction:column}.footer-links{flex-wrap:wrap}
+}
+@media(max-width:520px){
+ .actions{flex-direction:column;align-items:stretch}.actions .btn{justify-content:center}
+ .step-grid{grid-template-columns:1fr}.step,.step:first-child{padding:38px 0;border-right:0}
+ .step-icon{margin:35px 0 20px}.specs{grid-template-columns:1fr}.spec{border-right:0!important;border-bottom:1px solid var(--line);padding:18px 0!important}
+ .bottle{transform:scale(.72) rotate(5deg)}.product-visual .bottle{transform:scale(.68)}
+ .price-tag{width:115px;height:115px}.price-tag strong{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav container">
+  <a class="logo" href="#">Bau<span>Shape</span></a>
+  <nav class="navlinks">
+    <a href="#produkt">Produkt</a>
+    <a href="#vorteile">Vorteile</a>
+    <a href="#ablauf">So funktioniert's</a>
+    <a href="#zielgruppe">Für wen?</a>
+  </nav>
+  <a class="navcta" href="#bestellen">Jetzt kaufen ↗</a>
+</header>
+
+<main>
+<section class="hero container">
+  <div class="hero-copy">
+    <div class="eyebrow">Vitaminpräparat · 30 Tagesportionen</div>
+    <h1>Weniger <em>essen.</em><br>Mehr du.</h1>
+    <p class="hero-sub">BauShape ist ein tägliches Nahrungsergänzungsmittel in Kapselform. Eine Dose enthält 30 Kapseln und ist als Ergänzung gedacht, wenn die Ernährung umgestellt wird und dadurch weniger oder einseitiger gegessen wird.</p>
+    <div class="actions">
+      <a class="btn" href="#bestellen">Jetzt bestellen <span class="arrow">↗</span></a>
+      <a class="btn light" href="#produkt">Produkt ansehen</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta"><b>01</b><span>30 Kapseln<br>pro Dose</span></div>
+      <div class="meta"><b>02</b><span>Vitamine,<br>Mineralstoffe &amp; Ballaststoffe</span></div>
+      <div class="meta"><b>03</b><span>24,90 €<br>pro Dose</span></div>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <div class="circle"></div>
+    <div class="price-tag"><strong>24,90 €</strong><span>pro Dose</span></div>
+    <div class="product-stage">
+      <div class="bottle">
+        <div class="cap"></div>
+        <div class="label">
+          <div class="mark">⌁</div>
+          <h2>BauShape</h2>
+          <p>Vitaminpräparat</p>
+          <div class="rule"></div>
+          <small>Vitamine · Mineralstoffe<br>· Ballaststoffe</small>
+          <div class="rule"></div>
+          <small>30 Kapseln</small>
+        </div>
+        <div class="capsule c1"></div><div class="capsule c2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div class="marquee-track">
+  <span>BAUSHAPE <i>✳</i></span><span>30 KAPSELN <i>✳</i></span><span>24,90 € <i>✳</i></span><span>VITAMINE &amp; MINERALSTOFFE <i>✳</i></span>
+  <span>BAUSHAPE <i>✳</i></span><span>30 KAPSELN <i>✳</i></span><span>24,90 € <i>✳</i></span><span>VITAMINE &amp; MINERALSTOFFE <i>✳</i></span>
+</div></div>
+
+<section class="intro container" id="vorteile">
+  <div class="intro-grid">
+    <div>
+      <div class="kicker">01 / Das Prinzip</div>
+      <h2>Einfach. <em>Jeden Tag.</em></h2>
+    </div>
+    <div class="intro-right">
+      <p>Eine Kapsel pro Tag. BauShape kombiniert Vitamine, Mineralstoffe und Ballaststoffe in einer praktischen Tagesportion.</p>
+      <p class="mini-note">Das Produkt ist laut Kampagnenentwurf für Erwachsene zwischen 25 und 45 Jahren gedacht, die Schwierigkeiten haben, Gewicht zu verlieren.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="ablauf">
+  <div class="container step-grid">
+    <article class="step"><div class="step-num">01 / VORHER</div><div class="step-icon">◯</div><h3>Gewohnheiten ansehen</h3><p>BauShape ist als Ergänzung gedacht, wenn die Ernährung umgestellt wird.</p></article>
+    <article class="step"><div class="step-num">02 / MORGENS</div><div class="step-icon">↯</div><h3>Eine Kapsel nehmen</h3><p>Die Kapsel wird laut Entwurf 30 Minuten vor der Mahlzeit eingenommen.</p></article>
+    <article class="step"><div class="step-num">03 / ÜBER DIE WOCHE</div><div class="step-icon">✳</div><h3>Dranbleiben</h3><p>Eine Dose enthält 30 Kapseln und reicht damit für einen Monat.</p></article>
+    <article class="step"><div class="step-num">04 / IM ALLTAG</div><div class="step-icon">⌁</div><h3>Bewusst essen</h3><p>Die Kampagnenidee verbindet die Einnahme mit einer bewussteren Ernährung.</p></article>
+  </div>
+</section>
+
+<section class="persona" id="zielgruppe">
+  <div class="container persona-grid">
+    <div class="persona-photo">
+      <div class="quote">„Ich möchte meine Ernährung umstellen, aber mir fehlen einfache Ideen für den Alltag.“<small>MARKUS, 40 · PERSONA AUS DEM KAMPAGNENENTWURF</small></div>
+    </div>
+    <div>
+      <div class="big-word">Für wen ist BauShape?</div>
+      <h2>Mehr Struktur für den <em>Alltag.</em></h2>
+      <p>BauShape richtet sich laut Kampagnenentwurf an Erwachsene zwischen 25 und 45 Jahren, die Schwierigkeiten haben, Gewicht zu verlieren. Die Persona Markus arbeitet im Büro, ist verheiratet und hat ein Kind.</p>
+      <p>Die gewünschte Markenstimme bleibt kurz, sachlich und respektvoll. Keine großen Versprechen. Keine erfundenen Zahlen.</p>
+      <a class="btn" href="#produkt">Mehr über das Produkt ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="product container" id="produkt">
+  <div class="product-grid">
+    <div class="product-visual">
+      <div class="bottle">
+        <div class="cap"></div>
+        <div class="label">
+          <div class="mark">⌁</div>
+          <h2>BauShape</h2>
+          <p>Vitaminpräparat</p>
+          <div class="rule"></div>
+          <small>Vitamine · Mineralstoffe<br>· Ballaststoffe</small>
+          <div class="rule"></div>
+          <small>30 Kapseln</small>
+        </div>
+        <div class="capsule c1"></div><div class="capsule c2"></div>
+      </div>
+    </div>
+    <div class="product-copy">
+      <div class="kicker">02 / Das Produkt</div>
+      <h2>Alles, was du <em>brauchst.</em></h2>
+      <p>Eine Dose BauShape enthält 30 Kapseln. Das Nahrungsergänzungsmittel liefert laut Produktbeschreibung wichtige Vitamine, Mineralstoffe und Ballaststoffe.</p>
+      <div class="specs">
+        <div class="spec"><b>30</b><span>Kapseln pro Dose</span></div>
+        <div class="spec"><b>1×</b><span>pro Tag</span></div>
+        <div class="spec"><b>24,90 €</b><span>pro Dose</span></div>
+        <div class="spec"><b>30 Min.</b><span>vor der Mahlzeit</span></div>
+      </div>
+      <a class="btn" href="#bestellen">Dose bestellen ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="bestellen">
+  <div class="container final-inner">
+    <div class="kicker" style="color:var(--acid)">03 / Dein nächster Schritt</div>
+    <h2>30 Tage.<br><em>Einfacher.</em></h2>
+    <p>Eine Dose BauShape kostet 24,90 €. Erhältlich im eigenen Onlineshop und in ausgewählten Drogeriemärkten. Einzelkauf oder Monatsabo, laut Kampagnenentwurf jederzeit kündbar.</p>
+    <a class="btn" href="#">Jetzt bestellen <span class="arrow">↗</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">BauShape</div>
+      <div class="footer-meta">VITAMINPRÄPARAT · 30 TAGESPORTIONEN<br>Eine Übungswebsite auf Basis des Muster-Kampagnenentwurfs.</div>
+      <div class="footer-links"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+    </div>
+    <div class="disclaimer">HINWEIS: BauShape ist im zugrunde liegenden Kampagnenentwurf ausdrücklich als erfunden gekennzeichnet. Das Kundenzitat ist ein Übungs-Platzhalter. Diese Website ist ein Design-/Unterrichtsbeispiel und kein echter Shop.</div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id && id!=="#"){
+      const el=document.querySelector(id);
+      if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+    }
+  });
+});
+</script>
+</body>
+</html>
